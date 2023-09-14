@@ -27,6 +27,11 @@ class Event extends Model
         'num_tickets'
     ];
 
+    protected $casts = [
+      'start_date' => 'date:d/m/Y',
+      'end_date' => 'date:d/m/Y',
+    ];
+
       public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -52,6 +57,11 @@ class Event extends Model
         return $this->hasMany(Like::class);
     }
 
+      public function savedEvents(): HasMany
+    {
+        return $this->hasMany(SavedEvent::class);
+    }
+
       public function attendings(): HasMany
     {
         return $this->hasMany(Attending::class);
@@ -60,6 +70,11 @@ class Event extends Model
       public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+      public function hasTag($tag)
+    {
+        return $this->tags->contains($tag);
     }
 
 }
