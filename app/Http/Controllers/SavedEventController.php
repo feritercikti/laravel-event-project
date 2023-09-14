@@ -12,10 +12,10 @@ class SavedEventController extends Controller
      */
     public function __invoke()
     {
-        $events = Event::with('savedEvents')->whereHas('savedEvents', function($q){
+        $events = Event::with('savedEvents')->whereHas('savedEvents', function ($q) {
             $q->where('user_id', auth()->id());
         })->get();
 
-        return view('events.savedEvents',compact('events'));
+        return view('events.savedEvents', compact('events'));
     }
 }

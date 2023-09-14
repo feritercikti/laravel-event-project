@@ -18,7 +18,7 @@ class AttendingSystemController extends Controller
             $attending->delete();
             return null;
         } else {
-            $attending = $event ->attendings()-create([
+            $attending = $event->attendings()->create([
                 'user_id' => auth()->id(),
                 'num_tickets' => 1
             ]);

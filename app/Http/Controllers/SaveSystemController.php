@@ -18,7 +18,7 @@ class SaveSystemController extends Controller
             $savedEvent->delete();
             return null;
         } else {
-            $savedEvent = $event ->savedEvents()-create([
+            $savedEvent = $event->savedEvents()->create([
                 'user_id' => auth()->id()
             ]);
             return $savedEvent;

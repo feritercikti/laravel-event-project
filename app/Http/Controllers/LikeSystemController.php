@@ -18,7 +18,7 @@ class LikeSystemController extends Controller
             $like->delete();
             return null;
         } else {
-            $like = $event ->likes()-create([
+            $like = $event->likes()->create([
                 'user_id' => auth()->id()
             ]);
             return $like;
